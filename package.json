@@ -1,0 +1,34 @@
+{
+  "name": "amplenote-plugin-scaffolding",
+  "version": "1.0.0",
+  "description": "an Amplenote plugin local development scaffolding",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "parse": "node parser/parser.js",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/bundle.js --target=chrome58,firefox57,safari11,edge16",
+    "formatBundle": "node scripts/formatBundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahmoudFahiem/amplenote-plugin-scaffolding.git"
+  },
+  "keywords": [
+    "amplenote",
+    "plugin",
+    "scaffolding",
+    "template"
+  ],
+  "author": "Mahmoud Fahiem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MahmoudFahiem/amplenote-plugin-scaffolding/issues"
+  },
+  "homepage": "https://github.com/MahmoudFahiem/amplenote-plugin-scaffolding#readme",
+  "devDependencies": {
+    "clipboardy": "^4.0.0",
+    "esbuild": "^0.19.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
