@@ -70,4 +70,19 @@ export interface App {
    * @returns An array of noteHandles for all notes that match the filter parameters.
    */
   filterNotes(filters?: FilterParameters): Promise<Array<NoteHandle>>;
+  /**
+   * Finds the noteHandle of a note, if the note is extant and not marked as deleted.
+   * In addition to verifying whether a note exists, this can be used to fill in some additional details for a note,
+   * e.g., if the plugin only has a noteUUID it can call this to get the name and tags applied to the note.
+   *
+   * @param noteInfo - Partial<{@link NoteHandle}> Object identifying the note to find, with the following properties:
+   *  - uuid: The UUID identifying a specific note, if provided, will be used regardless of other properties.
+   *  - name: String name of the note to find. If uuid is not provided, this must be supplied.
+   *  - tags: Optional array of tag filter strings that the note must match, in addition to the name.
+   *          Each array entry can be the name of a tag, e.g., ["some-tag"], or can include a negation operator
+   *          to only match notes that don't have that tag, e.g., ["^not-this-tag"].
+   * @returns NoteHandle of the note, or null if the note does not exist or has been marked as deleted.
+   * If the note is found, the extracted details are returned.
+   */
+  findNote(noteInfo: Partial<NoteHandle>): Promise<NoteHandle | null>;
 }
